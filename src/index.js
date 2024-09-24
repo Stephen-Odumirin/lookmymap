@@ -20,7 +20,7 @@ const app = express();
 
 // Use CORS middleware to handle cross-origin requests
 app.use(cors({
-  origin: 'http://localhost:3000',//'https://restaurant-admin-dashboard-ve23.vercel.app', // TODO Replace with your frontend's URL
+  origin: 'https://lookmyapp.vercel.app',//'https://restaurant-admin-dashboard-ve23.vercel.app', // TODO Replace with your frontend's URL
   credentials: true, // Enable sending credentials
 }));
 
@@ -29,7 +29,7 @@ app.use(express.json());
 
 // Default route for root path
 app.get('/', (req, res) => {
-  res.send('Server is up and running.');
+  res.send('Server is up and running. Edited');
 });
 
 // Set up route handlers
