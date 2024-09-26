@@ -28,3 +28,41 @@ export const handleContactForm = async (req, res) => {
     res.status(500).json({ error: 'Internal server error' });
   }
 };
+
+//Get all contacts
+export const getContacts = async (req, res) => {
+  try{
+    const contacts = await Contact.find();
+    res.json(contacts);
+  } catch(error){
+    res.status(500).json({error: 'Failed to retrieve contacts'});
+  }
+};
+
+//Get a single contacts
+export const getContactById = async (req, res) => {
+  const { id } = req.params;
+  try{
+    const contact = await Contact.findById(id);
+    if(!contact){
+      return res.status(404).json({error: 'Contact not found'});
+    }
+    return res.status(200).json(contact);
+  } catch(error){
+    console.error('Error fetching map:', error);
+    res.status(500).json({error: 'Failed to retrieve contact'});
+  }
+};
+
+export const deleteContact = async(req, res) => {
+  const {id} = req.params;
+  try{
+    const deletedContact = await Contact.findByIdAndDelete(id);
+    if(!deleteContact) return res.status(404).json({error: 'Contact not found'});
+    res.json({message: 'Contact deleted successfully'});
+  }  catch(error){
+    res.status(500).json({error: 'Failed to delete contact'});
+  }
+};
+
+
