@@ -16,6 +16,9 @@ dotenv.config();
 // Connect to the database
 connectDB();
 
+//Connect to email client
+transporter();
+
 const app = express();
 
 // Use CORS middleware to handle cross-origin requests
@@ -38,6 +41,7 @@ app.use('/api/listings', listingRoutes);
 app.use('/api/maps', mapRoutes);
 app.use('/api/cities', cityRoutes);
 app.use('/api/contact', contactRoutes);
+app.use('/api', emailRoutes);
 
 // ES module replacement for __dirname
 const __filename = fileURLToPath(import.meta.url);

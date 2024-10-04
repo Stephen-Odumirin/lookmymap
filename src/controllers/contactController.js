@@ -11,12 +11,7 @@ export const handleContactForm = async (req, res) => {
 
   try {
     // Create a new contact document
-    const newContact = new Contact({
-      name,
-      companyName,
-      email,
-      message
-    });
+    const newContact = new Contact({name,companyName,email,message});
 
     // Save the contact document to the database
     await newContact.save();
