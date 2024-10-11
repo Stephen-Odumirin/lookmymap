@@ -13,7 +13,8 @@ const listingSchema = new mongoose.Schema({
   phone: { type: String },
   latitude: { type: Number, required: true },  // Add latitude
   longitude: { type: Number, required: true }, 
-  category: {type: String}
+  category: {type: String},
+  tourId: {type: String}, //Added the tour id to each listing
 }, { timestamps: true });
 
 export default mongoose.model('Listing', listingSchema);

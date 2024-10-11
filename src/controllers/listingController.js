@@ -5,7 +5,7 @@ import Listing from '../models/listingModel.js';
 // Create a new listing (Admin)
 export const createListing = async (req, res) => {
   //console.log('Uploaded Files:', req.files);
-  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category } = req.body;
+  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category, tourId } = req.body;
   
   const coverImage = req.files.coverImage?.[0];//req.files.coverImage?.[0];
   const logo = req.files.logo?.[0];
@@ -29,7 +29,8 @@ export const createListing = async (req, res) => {
       phone,
       latitude, 
       longitude,
-      category
+      category,
+      tourId
     });
     await newListing.save();
     res.status(201).json(newListing);
@@ -108,6 +109,7 @@ export const updateListing = async (req, res) => {
     latitude,
     longitude,
     category,
+    tourId
   } = req.body;
 
   // Handle uploaded files
@@ -134,6 +136,7 @@ export const updateListing = async (req, res) => {
       latitude: latitude || existingListing.latitude,
       longitude: longitude || existingListing.longitude,
       category: category || existingListing.category,
+      tourId: tourId || existingListing.tourId
     };
 
     // Update the listing with new fields
