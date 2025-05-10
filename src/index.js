@@ -30,7 +30,7 @@ app.use(express.json());
 
 // Default route for root path
 app.get('/', (req, res) => {
-  res.send('Server is up and running as expected. #2');
+  res.send('Server is up and running as expected. #3');
 });
 
 // Set up route handlers

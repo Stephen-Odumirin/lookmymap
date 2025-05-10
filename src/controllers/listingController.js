@@ -5,7 +5,7 @@ import Listing from '../models/listingModel.js';
 // Create a new listing (Admin)
 export const createListing = async (req, res) => {
   //console.log('Uploaded Files:', req.files);
-  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category, tourId } = req.body;
+  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category, tourId, video, priority } = req.body;
   
   const coverImage = req.files.coverImage?.[0];//req.files.coverImage?.[0];
   const logo = req.files.logo?.[0];
@@ -30,7 +30,9 @@ export const createListing = async (req, res) => {
       latitude, 
       longitude,
       category,
-      tourId
+      tourId,
+      video,
+      priority: priority || 0 // Default to 0 if not provided
     });
     await newListing.save();
     res.status(201).json(newListing);
