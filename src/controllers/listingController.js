@@ -111,7 +111,9 @@ export const updateListing = async (req, res) => {
     latitude,
     longitude,
     category,
-    tourId
+    tourId,
+    video,
+    priority
   } = req.body;
 
   // Handle uploaded files
@@ -138,7 +140,9 @@ export const updateListing = async (req, res) => {
       latitude: latitude || existingListing.latitude,
       longitude: longitude || existingListing.longitude,
       category: category || existingListing.category,
-      tourId: tourId || existingListing.tourId
+      tourId: tourId || existingListing.tourId,
+      video: video || existingListing.video,
+      priority: priority || existingListing.priority // Default to 0 if not provided
     };
 
     // Update the listing with new fields

@@ -15,8 +15,8 @@ const listingSchema = new mongoose.Schema({
   longitude: { type: Number, required: true }, 
   category: {type: String},
   tourId: {type: String}, //Added the tour id to each listing
-  video: { type: String }, // Path to video
-  priority: { type: Number, default: 0 }, // Priority for sorting
+  video: { type: String, default: '' }, // Path to video
+  priority: { type: String, default: '0' }, // Priority for sorting
 }, { timestamps: true });
 
 export default mongoose.model('Listing', listingSchema);
