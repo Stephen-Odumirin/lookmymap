@@ -5,7 +5,7 @@ import Listing from '../models/listingModel.js';
 // Create a new listing (Admin)
 export const createListing = async (req, res) => {
   //console.log('Uploaded Files:', req.files);
-  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category, tourId, video, priority } = req.body;
+  const { title, description, location, website, googleNavigator, email, phone, address, latitude, longitude, category, tourId, video, priority, priorityType } = req.body;
   
   const coverImage = req.files.coverImage?.[0];//req.files.coverImage?.[0];
   const logo = req.files.logo?.[0];
@@ -32,7 +32,8 @@ export const createListing = async (req, res) => {
       category,
       tourId,
       video,
-      priority: priority || 0 // Default to 0 if not provided
+      priority: priority || '5', // Default to 0 if not provided
+      priorityType: priorityType || '5' // Default to 0 if not provided
     });
     await newListing.save();
     res.status(201).json(newListing);
@@ -113,7 +114,8 @@ export const updateListing = async (req, res) => {
     category,
     tourId,
     video,
-    priority
+    priority,
+    priorityType
   } = req.body;
 
   // Handle uploaded files
@@ -142,7 +144,8 @@ export const updateListing = async (req, res) => {
       category: category || existingListing.category,
       tourId: tourId || existingListing.tourId,
       video: video || existingListing.video,
-      priority: priority || existingListing.priority // Default to 0 if not provided
+      priority: priority || existingListing.priority, // Default to 0 if not provided
+      priorityType: priorityType || existingListing.priorityType // Default to 0 if not provided
     };
 
     // Update the listing with new fields
