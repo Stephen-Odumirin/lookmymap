@@ -21,8 +21,9 @@ const app = express();
 
 // Use CORS middleware to handle cross-origin requests
 app.use(cors({
-  origin: 'https://lookmyapp.vercel.app', 
-  //origin: 'http://localhost:3000',
+  origin: 'https://lookmyapp.vercel.app', //origin: 'http://localhost:3000', //
+  methods: ['GET','POST','PUT','DELETE','OPTIONS'],
+  allowedHeaders: ['Content-Type','Authorization'],
   credentials: true, // Enable sending credentials
 }));
 
